@@ -27,4 +27,11 @@ print(res.geturl())
 res = opener.open("http://moodle.monlau.es:91/calendar/view.php")
 print(res.geturl())
 calendar = res.read()
-#print(calendar.decode())
+calendar = calendar.decode()
+
+#print(calendar) //Used for debugging purposes.
+
+soup = BeautifulSoup(calendar, 'html.parser')
+#print(soup.prettify().encode("utf8"))
+mydivs = soup.findAll("div", { "class" : "event" })
+print(mydivs)
